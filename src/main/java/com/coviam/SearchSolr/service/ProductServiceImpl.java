@@ -12,7 +12,6 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-
     @Autowired
     private ProductRepo productRepo;
     @Override
@@ -21,8 +20,6 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList = productRepo.findByProductNameContainsOrProductDescriptionContainsOrProductBrandNameContainsOrProductCategoryNameContains(name,name,name,name);
 
         List<ProductDto> productDtoList = new ArrayList<>();
-
-
 
         for(Product product : productList){
 
@@ -46,7 +43,5 @@ public class ProductServiceImpl implements ProductService {
          productRepo.save(product);
          return true;
     }
-
-
 
 }

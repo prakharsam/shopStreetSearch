@@ -19,16 +19,13 @@ public class ProductController {
     public ResponseEntity<List<ProductDto>> searchProduct(@RequestParam String name){
 
         List<ProductDto>  productDtoList = productService.getProducts(name);
-
-
         return new ResponseEntity<>(productDtoList,HttpStatus.OK);
 
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public boolean addDocument(@RequestBody ProductDto productDto){
-
-        return productService.saveDocument(productDto);
+      return productService.saveDocument(productDto);
 
     }
 
