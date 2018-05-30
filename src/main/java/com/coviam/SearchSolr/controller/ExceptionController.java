@@ -1,4 +1,4 @@
-package com.coviam.SearchSolr;
+package com.coviam.SearchSolr.controller;
 
 
 import org.slf4j.LoggerFactory;
