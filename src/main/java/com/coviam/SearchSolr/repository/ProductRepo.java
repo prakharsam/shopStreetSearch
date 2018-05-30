@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface ProductRepo extends SolrCrudRepository<Product, Long> {
 
-    List<Product> findByProductNameContainsOrProductDescriptionContainsOrProductBrandNameContainsOrProductCategoryNameContains(String productName,String productDescription,String productBrandName,String productCategoryName);
+    List<Product> findByProductNameContainsOrProductDescriptionContainsOrProductBrandNameContainsOrProductCategoryNameContainsOrProductMerchantNameContains(List<String> productName,List<String> productDescription,List<String> productBrandName,List<String> productCategoryName,List<String> productMerchantName);
 
 }
