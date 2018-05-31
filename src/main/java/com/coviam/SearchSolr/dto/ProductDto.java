@@ -24,7 +24,7 @@ public class ProductDto {
         this.productPrice = productPrice;
         this.merchantID = merchantID;
         this.productMerchantName = productMerchantName;
-        this.merchantCount=merchantCount;
+        this.merchantCount = merchantCount;
 
     }
 
@@ -86,6 +86,7 @@ public class ProductDto {
     public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
+
     public long getMerchantID() {
         return merchantID;
     }

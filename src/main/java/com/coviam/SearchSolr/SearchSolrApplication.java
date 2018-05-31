@@ -9,10 +9,10 @@ import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 @SpringBootApplication
 @ComponentScan(basePackages = "com.coviam.SearchSolr")
 @Configuration
-@EnableSolrRepositories(basePackages = { "com.coviam.SearchSolr" })
+@EnableSolrRepositories(basePackages = {"com.coviam.SearchSolr"})
 public class SearchSolrApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SearchSolrApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SearchSolrApplication.class, args);
+    }
 }
