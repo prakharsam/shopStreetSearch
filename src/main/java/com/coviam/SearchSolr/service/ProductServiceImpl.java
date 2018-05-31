@@ -4,7 +4,6 @@ import com.coviam.SearchSolr.dto.ProductDto;
 import com.coviam.SearchSolr.dto.ResponseDto;
 import com.coviam.SearchSolr.model.Product;
 import com.coviam.SearchSolr.repository.ProductRepo;
-import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,18 +40,18 @@ public class ProductServiceImpl implements ProductService {
         String categoryBetween = tokens.get(0).replaceAll(" between  \\d+ and \\d+", "");
 
 
-        if(LESS_THAN.matcher(name).matches()){
-            productList = productRepo.priceLessThan(category,Long.valueOf(tokens.get(tokens.size()-1)));
+        if (LESS_THAN.matcher(name).matches()) {
+            productList = productRepo.priceLessThan(category, Long.valueOf(tokens.get(tokens.size() - 1)));
             return conversionProductToReponse(productList);
-        }else if(GREATER_THAN.matcher(name).matches()){
+        } else if (GREATER_THAN.matcher(name).matches()) {
 
-            productList = productRepo.priceGreaterThan(category,Long.valueOf(tokens.get(tokens.size()-1)));
+            productList = productRepo.priceGreaterThan(category, Long.valueOf(tokens.get(tokens.size() - 1)));
 
             return conversionProductToReponse(productList);
 
-        }else if(name.contains("between")){
+        } else if (name.contains("between")) {
 
-            productList = productRepo.priceBetween(categoryBetween,Long.valueOf(tokens.get(tokens.size()-3)),Long.valueOf(tokens.get(tokens.size()-1)));
+            productList = productRepo.priceBetween(categoryBetween, Long.valueOf(tokens.get(tokens.size() - 3)), Long.valueOf(tokens.get(tokens.size() - 1)));
 
 //            productList = productRepo.priceBetween(tokens.get(0),Long.valueOf(tokens.get(tokens.size()-3)),Long.valueOf(tokens.get(tokens.size()-1)));
 
@@ -79,8 +78,24 @@ public class ProductServiceImpl implements ProductService {
         return true;
     }
 
-    private List<ResponseDto> conversionProductToReponse(List<Product> productList)
-    {
+    @Override
+    public List<String> reccomendProduct(String name) {
+
+        List<String> tokens = Arrays.asList(name.split(" "));
+        List<String> productNameList = new ArrayList<>();
+        List<Product> productList = new ArrayList<>();
+
+        productList = productRepo.findByProductNameContainsOrProductBrandNameContainsOrProductCategoryNameContains(tokens,tokens,tokens);
+        for(Product product:productList){
+
+            productNameList.add(product.getProductName());
+        }
+
+        return productNameList;
+
+    }
+
+    private List<ResponseDto> conversionProductToReponse(List<Product> productList) {
         List<ResponseDto> responseDtoList = new ArrayList<>();
 
         for (Product product : productList) {

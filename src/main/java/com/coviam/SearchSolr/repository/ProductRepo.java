@@ -17,11 +17,13 @@ public interface ProductRepo extends SolrCrudRepository<Product, Long> {
 
 
     @Query("productPrice:[?1 TO *] AND productCategoryName : *?0*")
-    List<Product> priceGreaterThan(String productCategoryName,long productPrice);
+    List<Product> priceGreaterThan(String productCategoryName, long productPrice);
 
 
     @Query("productPrice:[?1 TO ?2] AND productCategoryName : *?0*")
-    List<Product> priceBetween(String productCategoryName,long minPrice,long maxPrice);
+    List<Product> priceBetween(String productCategoryName, long minPrice, long maxPrice);
+
+    List<Product> findByProductNameContainsOrProductBrandNameContainsOrProductCategoryNameContains(List<String> productName, List<String> productBrandName, List<String> productCategoryName);
 
 
 }

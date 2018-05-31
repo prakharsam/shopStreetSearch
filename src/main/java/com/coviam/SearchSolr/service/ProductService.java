@@ -11,4 +11,6 @@ public interface ProductService {
 
     boolean saveDocument(ProductDto productDto);
 
+    List<String> reccomendProduct(String name);
+
 }
