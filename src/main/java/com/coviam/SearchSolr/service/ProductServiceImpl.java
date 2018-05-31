@@ -85,8 +85,8 @@ public class ProductServiceImpl implements ProductService {
         List<String> productNameList = new ArrayList<>();
         List<Product> productList = new ArrayList<>();
 
-        productList = productRepo.findByProductNameContainsOrProductBrandNameContainsOrProductCategoryNameContains(tokens,tokens,tokens);
-        for(Product product:productList){
+        productList = productRepo.findByProductNameContainsOrProductBrandNameContainsOrProductCategoryNameContains(tokens, tokens, tokens);
+        for (Product product : productList) {
 
             productNameList.add(product.getProductName());
         }
