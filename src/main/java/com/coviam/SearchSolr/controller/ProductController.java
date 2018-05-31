@@ -36,7 +36,7 @@ public class ProductController {
 
     }
 
-    @RequestMapping(value = "/reccomend")
+    @RequestMapping(value = "/recommend")
     public List<String> reccomendProduct(@RequestParam String name) {
         return productService.reccomendProduct(name);
 
